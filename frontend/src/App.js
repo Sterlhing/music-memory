@@ -6,6 +6,7 @@ import { Image } from 'primereact/image'
 import { ListBox } from 'primereact/listbox'
 import NavBar from './NavBar'
 import LoginModal from './LoginModal'
+import { LoremIpsum } from 'lorem-ipsum'
 
 class App extends React.Component {
 
@@ -48,12 +49,26 @@ class App extends React.Component {
     const albums = this.state.data.albums.items
     const newReleases = albums
       .map(album => {
+        const lorem = new LoremIpsum({
+          sentencesPerParagraph: {
+            max: 8,
+            min: 4
+          },
+          wordsPerSentence: {
+            max: 16,
+            min: 4
+          }
+        })
+
         const artistInfos = [
           album.name,
           album.release_date,
           album.total_tracks,
           album.external_urls.spotify,
-          'review', // xxx: when clicked bring to Album.js
+          `
+          album review:
+          ${lorem.generateSentences(5)}
+          `, // xxx: break out to own page
         ]
 
         return (
