@@ -61,14 +61,16 @@ class App extends React.Component {
         })
 
         const artistInfos = [
-          album.name,
-          album.release_date,
-          album.total_tracks,
+          `album name: ${album.name}`,
+          `release date: ${album.release_date}`,
+          `total tracks: ${album.total_tracks}`,
+          '😵‍💫',
+          'album review:',
+          lorem.generateSentences(5),
+          ' * ',
+          ' ** ',
+          ' *** ',
           album.external_urls.spotify,
-          `
-          album review:
-          ${lorem.generateSentences(5)}
-          `, // xxx: break out to own page
         ]
 
         return (
